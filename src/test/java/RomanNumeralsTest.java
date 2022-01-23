@@ -1,25 +1,25 @@
 
+import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
-
 import static org.junit.Assert.*;
 
 public class RomanNumeralsTest {
 
     @ParameterizedTest
     @MethodSource("parametersGenerator")
-    void convert_NumeralsToRoman_isTrue(Integer numerals,String expRoman){
+    public void convert_NumeralsToRoman_isTrue(Integer numerals,String expRoman){
         //Act
-        final String resultRoman = RomanNumerals.convert(numerals);
+        String resultRoman = RomanNumerals.convertRestNumeral(numerals);
 
         //Assert
         assertEquals(resultRoman, expRoman);
     }
 
-    // and then somewhere in this test class
     private static Stream<Arguments> parametersGenerator() {
         return Stream.of(
                 Arguments.of(1, "I"),
@@ -32,29 +32,29 @@ public class RomanNumeralsTest {
                 Arguments.of(500, "D"),
                 Arguments.of(1000, "M")
         );
-
     }
 
         @ParameterizedTest
         @MethodSource("parametersGenerator2")
-        void convert_NumeralsToRoman_isTrueOrFalse(Integer numerals,String expRoman, boolean boolExpected){
+        public void convert_NumeralsToRoman_isTrueOrFalse(Integer numerals,String expRoman, boolean boolExpected){
             //Act
-            final String resultRoman = RomanNumerals.convert(numerals);
+            String resultRoman = RomanNumerals.convertRestNumeral(numerals);
+            //System.out.println(resultRoman+" "+expRoman);
 
             //Assert
             assertEquals(resultRoman.contentEquals(expRoman), boolExpected);
         }
-
-        // and then somewhere in this test class
         private static Stream<Arguments> parametersGenerator2() {
             return Stream.of(
-                    Arguments.of(838,"DCCCXXXVIII", true),
-                    Arguments.of(44,"XLIV", true),
-                    Arguments.of(45,"XLIV", false)
+                    Arguments.of(685,"DCLXXXV", true),
+                    Arguments.of(94,"XCIV", true),
+                    Arguments.of(49,"XLIX", true),
+                    Arguments.of(837,"DCCCXXXVII", true),
+                    Arguments.of(47,"XLI", false),
+                    Arguments.of(44,"XLIV", true),            //assertTrue
+                    Arguments.of(45,"XLIV", false)            //assertFalse
             );
-
         }
-
     }
 
 
