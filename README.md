@@ -1,7 +1,7 @@
 # KataGames
 Mars Rover Kata
 
-Definitions and restrictions of the game:
+Definitions and restrictions of the game:\n
 • Define a Obstacle's Fixed-point (X,Y) and Direction (C-centered) 
 • Define the direction a Rover is facing (N,S,E,W) and starting points (X,Y)
 • Define each Rover's MAX movement coordinates:
