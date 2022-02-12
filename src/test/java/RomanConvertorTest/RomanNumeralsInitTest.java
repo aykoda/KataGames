@@ -17,41 +17,40 @@ public class RomanNumeralsInitTest {
     @Test
     public void should_TestMinAndMax_NumeralsConstrains(){
         //Act
-        Boolean isTrueResult = RomanNumerals.NumeralsConstrains(5000);
-
+        Boolean isTrueResult = RomanNumerals.isNumeralsConstrains(0);
         //Assert
-        assertEquals(true, isTrueResult);
+        assertEquals(false, isTrueResult);
     }
 
     @Test
     public void convert_shouldReturn1() {
-        final String romanNumeral = RomanNumerals.convert(1);
+        final String romanNumeral = RomanNumerals.convertRestNumeral(-1);
         assertThat(romanNumeral, is("I"));
     }
 
     @Test
     public void convert_shouldReturn4() {
 
-        final String romanNumeral = RomanNumerals.convert(4);
+        final String romanNumeral = RomanNumerals.convertRestNumeral(4);
         assertThat(romanNumeral, is("IV"));
     }
 
     @Test
     public void convert_shouldReturn19() {
 
-        final String romanNumeral = RomanNumerals.convert(19);
+        final String romanNumeral = RomanNumerals.convertRestNumeral(19);
         assertThat(romanNumeral, is("XIX"));
     }
     @Test
     public void convert_shouldReturn45() {
 
-        final String romanNumeral = RomanNumerals.convert(44);
+        final String romanNumeral = RomanNumerals.convertRestNumeral(44);
         assertThat(romanNumeral, is("XLIV"));
     }
     @Test
     public void convert_shouldReturn95() {
 
-        final String romanNumeral = RomanNumerals.convert(99);
+        final String romanNumeral = RomanNumerals.convertRestNumeral(99);
         assertThat(romanNumeral, is("XCIX"));
     }
 

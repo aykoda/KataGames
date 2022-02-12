@@ -41,4 +41,8 @@ public class RomanNumerals {
             return ROMAN_NUMERALS.get(lowerKey)
                     + convertRestNumeral(number - lowerKey);
     }
+
+    public static boolean isNumeralsConstrains(int numeral){
+        return true;
+    }
 }
