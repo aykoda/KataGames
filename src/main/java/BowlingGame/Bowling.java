@@ -2,7 +2,7 @@ package BowlingGame;
 
 public class Bowling {
 
-        private int rolls[] = new int[21];
+        private int[] rolls = new int[21];
         private int currentRoll = 0;
         private int knickedDownPins10 = 10;
         private int is10thFrame = 9;
@@ -37,7 +37,7 @@ public class Bowling {
             return frame == is10thFrame;
         }
 
-        private boolean isStrike(int frameIndex) {
+        public boolean isStrike(int frameIndex) {
 
             return rolls[frameIndex] == knickedDownPins10;
         }
@@ -46,7 +46,7 @@ public class Bowling {
             return rolls[frameIndex+1] + rolls[frameIndex+2];
         }
 
-        private boolean isSpare(int frameIndex) {
+        public boolean isSpare(int frameIndex) {
 
             return rolls[frameIndex]+rolls[frameIndex+1] == knickedDownPins10;
         }
@@ -56,12 +56,19 @@ public class Bowling {
             return rolls[frameIndex+2];
         }
 
-        private int sumKnockedDownPinsInFrame(int frameIndex) {
+        public int sumKnockedDownPinsInFrame(int frameIndex) {
 
             return rolls[frameIndex] + rolls[frameIndex+1];
         }
 
 
+    public int[] getRolls() {
+        return rolls;
     }
+
+    public void setRolls(int[] rolls) {
+        this.rolls = rolls;
+    }
+}
 
 
