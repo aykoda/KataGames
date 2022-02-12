@@ -1,3 +1,5 @@
+package MarsRoverTest;
+
 import MarsRover.*;
 import org.junit.*;
 
