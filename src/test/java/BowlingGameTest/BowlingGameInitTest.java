@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 
 public class BowlingGameInitTest {
 
-    private Bowling game;//= new Bowling();
+    private Bowling game = new Bowling();
 
     @BeforeEach
     public void setup() {
