@@ -1,3 +1,5 @@
+package RomanConvertorTest;
+import RomanConvertor.*;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -56,63 +58,4 @@ public class RomanNumeralsTest {
             );
         }
     }
-
-
-/*
-    @Test
-    public void convert_shouldReturn1() {
-
-     Map<Integer, String> expected = new HashMap<>() {
-            {
-                put(1, "I");
-                put(5, "V");
-                put(10, "X");
-                put(50, "L");
-                put(100, "C");
-                put(500, "D");
-                put(1000, "M");
-            }};
-
-        //System.out.println(expected.entrySet().toArray()[0]);
-        //Arguments.of(new HashMap<Integer, String>() {{put(1, "I");}});
-
-        //Integer numerals =Integer.parseInt(params.keySet().toArray()[0].toString());
-        //String expRoman =params.values().toArray()[0].toString();
-
-        final String romanNumeral = RomanNumerals.convert(1);
-
-        assertThat(romanNumeral, is("I"));
-    }
-
-    @Test
-    public void convert_shouldReturn4() {
-
-        final String romanNumeral = RomanNumerals.convert(4);
-
-        assertThat(romanNumeral, is("IV"));
-    }
-
-    @Test
-    public void convert_shouldReturn19() {
-
-        final String romanNumeral = RomanNumerals.convert(19);
-
-        assertThat(romanNumeral, is("XIX"));
-    }
-    @Test
-    public void convert_shouldReturn45() {
-
-        final String romanNumeral = RomanNumerals.convert(44);
-
-        assertThat(romanNumeral, is("XLIV"));
-    }
-    @Test
-    public void convert_shouldReturn95() {
-
-        final String romanNumeral = RomanNumerals.convert(99);
-
-        assertThat(romanNumeral, is("XCIX"));
-    }
-
- */
 
