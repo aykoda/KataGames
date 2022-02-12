@@ -3,11 +3,6 @@ package RomanConvertorTest;
 import RomanConvertor.RomanNumerals;
 import org.junit.Test;
 
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Stream;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -17,14 +12,14 @@ public class RomanNumeralsInitTest {
     @Test
     public void should_TestMinAndMax_NumeralsConstrains(){
         //Act
-        Boolean isTrueResult = RomanNumerals.isNumeralsConstrains(0);
+        Boolean isTrueResult = RomanNumerals.isNumeralsConstrainsTrue(3999);
         //Assert
-        assertEquals(false, isTrueResult);
+        assertEquals(true, isTrueResult);
     }
 
     @Test
     public void convert_shouldReturn1() {
-        final String romanNumeral = RomanNumerals.convertRestNumeral(-1);
+        final String romanNumeral = RomanNumerals.convertRestNumeral(1);
         assertThat(romanNumeral, is("I"));
     }
 

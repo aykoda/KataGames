@@ -7,6 +7,7 @@ public class RomanNumerals {
 
     private static char FOUR = '4';
     private static char NINE = '9';
+    //private static String  result ="";
 
     private static final NavigableMap<Integer, String> ROMAN_NUMERALS = new TreeMap<>() {
         {
@@ -23,6 +24,11 @@ public class RomanNumerals {
 
     public static String convertRestNumeral(int number) {
         final String result = ROMAN_NUMERALS.get(number);
+
+        if (isNumeralsConstrainsTrue(number) == false)
+            return result;
+
+
         return result != null ? result : calculateRomanNumeral(number);
     }
 
@@ -42,7 +48,7 @@ public class RomanNumerals {
                     + convertRestNumeral(number - lowerKey);
     }
 
-    public static boolean isNumeralsConstrains(int numeral){
-        return true;
+    public static boolean isNumeralsConstrainsTrue(int numeral){
+        return (numeral > 0 && numeral < 4000) ;
     }
 }
