@@ -25,8 +25,9 @@ public class BowlingGameInitTest {
 
     @Test
     public void should_Test_KnockedDownPinsInFrameConstrains() {
+        game = new Bowling();
         //Act
-        game.roll(2);
+        game.roll(1);
         game.roll(9);
         int isTrueResult= game.sumKnockedDownPinsInFrame(0);
 
@@ -36,9 +37,9 @@ public class BowlingGameInitTest {
 
     @Test
     public void should_Test_isStrike() {
+        game = new Bowling();
         //Act
-        game.roll(2);
-        game.roll(8);
+        game.roll(10);
         Boolean isTrueResult= game.isStrike(0);
 
         //assert
@@ -48,7 +49,8 @@ public class BowlingGameInitTest {
     @Test
     public void should_Test_isSpare() {
         //Act
-        game.roll(10);
+        game.roll(2);
+        game.roll(8);
         Boolean isTrueResult= game.isSpare(0);
 
         //assert
