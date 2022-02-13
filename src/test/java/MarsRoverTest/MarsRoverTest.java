@@ -53,49 +53,36 @@ public class MarsRoverTest {
         roverList = Arrays.asList(rover, new Rover(surfaceCircle, commandList.get(1), roverSet));
         //#endregion
         obstacleKeep2 = new Obstacle();
-        //obstacleKeep2.setObstaclesList(obstacleList);
         roverKeep = new Rover(new Coordinates(3, 3, 5, 5, Direction.NORTH), "", obstacleKeep2);
-        //roverKeep.setObstaclesList(obstacleList);
     }
     //#region InitTestSection
     @Test
     public void A_should_SetInit_ObstacleList() {
-       //System.out.println(obstacleSet.getObstaclesList());
         assertThat(obstacleSet.getObstaclesList().size()).isEqualTo(6);
     }
     @Test
     public void B_should_NotAddToList_ExistObstacle() {
         boolean result = obstacleSet.isSetObstaclesListByValue(new Coordinates(2, 2, Direction.CENTER));
-
         Assert.assertEquals(false, result);
-        //System.out.println(obstacleSet.getObstaclesList());
     }
     @Test
     public void C_should_AddToList_RandomObstacles() {
         obstacleSet.setRandomObstacle(5, 5, 2);
         assertThat(obstacleSet.getObstaclesList().size()).isNotEqualTo(5);
-        //System.out.println(obstacleSet.getObstaclesList());
     }
     @Test
     public void D_should_SetInit_RoverObstacleList() {
-        //System.out.println(roverSet.getObstaclesList());
         assertThat(roverSet.getObstaclesList().size()).isEqualTo(2);
     }
     @Test
     public void E_should_NotAddToObstacleList_RoverExistCoordinates() {
         boolean result = roverSet.isSetObstaclesListByValue(surfaceSquare);
-
         Assert.assertEquals(false, result);
-        //System.out.println(roverSet.getObstaclesList());
     }
     @Test
     public void F_should_Merge_AD_ObstacleAndRoverList() {
-        //System.out.println("Obstacle list: " + obstacleSet.getObstaclesList());
-        //System.out.println("Rover list: " + roverSet.getObstaclesList());
         obstacleSet.setObstaclesList(roverSet.getObstaclesList());
-
         assertThat(obstacleSet.getObstaclesList().size()).isEqualTo(7);
-        //System.out.println("Obstacle+Rover list: " + obstacleSet.getObstaclesList());
     }
     //#endregion
     //#region RoversSection
@@ -117,11 +104,7 @@ public class MarsRoverTest {
     @ParameterizedTest
     @MethodSource("parametersGenerator")
     public void should_Move_SingleRover_Cases(Coordinates prmCoordinates, String prmCommand, String prmExpected, Boolean prmIsTrue) {
-        //obstacleKeep2.setObstaclesList(obstacleSet.getObstaclesList());
-        rover = new Rover(prmCoordinates, prmCommand, roverObstacle);//);
-        //System.out.println("---Rover : " + rover.getCoordinates());
-        //System.out.printf("ALL OBSTACLES %s\n", roverObstacle.getObstaclesList());
-
+        rover = new Rover(prmCoordinates, prmCommand, roverObstacle);
         resultPosition = rover.commandsMove();
         Assert.assertEquals(resultPosition.contentEquals(prmExpected), prmIsTrue);
     }
@@ -130,9 +113,6 @@ public class MarsRoverTest {
     @MethodSource("parametersGenerator")
     public void should_Move_AllRoversSequentially_StopedOneSetObstacle(Coordinates prmCoordinates, String prmCommand, String prmExpected, Boolean prmIsTrue) {
         rover = new Rover(prmCoordinates, prmCommand, obstacleKeep);
-        //System.out.println("---Rover : " + rover.getCoordinates());
-        //System.out.printf("ALL OBSTACLES %s\n", obstacleKeep.getObstaclesList());
-
         resultPosition = rover.commandsMove();
         Assert.assertEquals(resultPosition.contentEquals(prmExpected), prmIsTrue);
     }
@@ -151,11 +131,8 @@ public class MarsRoverTest {
     @ParameterizedTest
     @MethodSource("parametersGenerator2")
     public void should_ContinuedMove_NextCommands(String prmCommand, String prmExpected, Boolean prmIsTrue) {
-        //System.out.println(roverKeep.getCommands() + "---Rover NEXT Move: " + roverKeep.getCoordinates());
-        //System.out.printf(prmCommand + " " + roverKeep.getRoverObstacle().getObstaclesList() + " ALL OBSTACLES %s\n", obstacleKeep2.getObstaclesList());
         roverKeep.setCommands(prmCommand);
         String resultPosition = roverKeep.commandsMove();
-
         Assert.assertEquals(resultPosition.contentEquals(prmExpected), prmIsTrue);
     }
     //#endregion
