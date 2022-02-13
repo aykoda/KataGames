@@ -1,9 +1,6 @@
 package MarsRover;
 
-import MarsRover.Obstacle;
-
 public class Coordinates {
-
     private int x;
     private int y;
     private int maxX;
@@ -12,8 +9,7 @@ public class Coordinates {
     private Obstacle obstacle = new Obstacle();
     private boolean IS_CIRCLE;
 
-    public Coordinates() {
-    }
+    public Coordinates() {}
 
     public Coordinates(int xValue, int yValue, int maxX, int maxY, Direction directionValue) {
         setMaxX(maxX);
@@ -30,14 +26,6 @@ public class Coordinates {
         setY(yValue);
         setDirection(directionValue);
         setIsCircle(isCircle);
-    }
-
-    public boolean getIsCircle() {
-        return IS_CIRCLE;
-    }
-
-    public void setIsCircle(boolean isCircle) {
-        IS_CIRCLE = isCircle;
     }
 
     private boolean isCoordinatesLimit(boolean setByX, boolean byAdd, int nextPoint) {
@@ -72,9 +60,10 @@ public class Coordinates {
     }
 
     public boolean isObstacleCoordinates(boolean setByX, int nextPoint) {
-        int x = (setByX) ? nextPoint : getX();
+        int x = (setByX == true) ?  nextPoint: getX();
         int y = (setByX == false) ? nextPoint : getY();
 
+        //System.out.println("isObstacleCoordinates X Y "+x +"  "+y);
         return obstacle.isObstacleCoordinates(new Coordinates(x, y, getDirection()));
     }
 
@@ -92,30 +81,25 @@ public class Coordinates {
         return (isLimit || isObstacle) == true;
     }
 
-
-    public boolean calculateCoordinates(Direction directionValue) {
+    public boolean calculateCoordinates() {
         int xNextPoint = getX();
         int yNextPoint = getY();
 
         int nextPoint = 0;
         boolean isControlByX = false, isControlByAdd = false;
 
-        switch (directionValue) {
+        switch (getDirection()) {
             case EAST:
                 //if (!isCoordinatesLimit(getX(), getMaxX()))
                 //if(!isCoordinatesObstacle(xLocation + 1,getY()))
                 //    setX(xLocation + 1);
-
                 isControlByX = (isControlByAdd = true);
                 nextPoint = (xNextPoint += 1);
-                //if(isLimitOrObstacle(true, true, xNextPoint))
                 break;
-
             case WEST:
                 //if (!isCoordinatesLimit(getX(), 0))
                 //if(!isCoordinatesObstacle(xLocation - 1,getY()))
                 //setX(xLocation - 1);
-
                 isControlByX = !(isControlByAdd = false);
                 nextPoint = (xNextPoint -= 1);
                 break;
@@ -132,9 +116,8 @@ public class Coordinates {
                 //    setY(yLocation - 1);
                 isControlByX = (isControlByAdd = false);
                 nextPoint = (yNextPoint -= 1);
-                break;
-        }
-        if (!isLimitOrObstacle(isControlByX, isControlByAdd, nextPoint)) {
+                break;        }
+        if (isLimitOrObstacle(isControlByX, isControlByAdd, nextPoint) == false) {
 
             System.out.printf("Old X:%s Y:%s \n", getX(), getY());
             setX(xNextPoint);
@@ -146,14 +129,9 @@ public class Coordinates {
         }
     }
 
-    public boolean setCoordinatesPerDirection() {
-
-        return calculateCoordinates(getDirection());
-    }
-
     public void changeDirectionLeft() {
 
-        System.out.println("Old Direction: " + getDirection().getShortName());
+        System.out.println("Old Direction: " + getDirection());
 
         switch (getDirection()) {
             case NORTH:
@@ -169,7 +147,7 @@ public class Coordinates {
                 setDirection(Direction.SOUTH);
                 break;
         }
-        System.out.println("New Direction: " + getDirection().getShortName());
+        System.out.println("New Direction: " + getDirection());
     }
 
     public void changeDirectionRight() {
@@ -196,6 +174,11 @@ public class Coordinates {
     public String toString() {
 
         return getX() + " " + getY() + " " + getDirection().getShortName();
+    }
+
+    public boolean setCoordinatesPerDirection() {
+
+        return calculateCoordinates();
     }
 
     public void setDirection(Direction value) {
@@ -236,5 +219,13 @@ public class Coordinates {
 
     public void setMaxY(int maxY) {
         this.maxY = maxY;
+    }
+
+    public boolean getIsCircle() {
+        return IS_CIRCLE;
+    }
+
+    public void setIsCircle(boolean isCircle) {
+        IS_CIRCLE = isCircle;
     }
 }

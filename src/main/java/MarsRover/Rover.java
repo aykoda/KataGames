@@ -1,47 +1,23 @@
 package MarsRover;
 
-import MarsRover.Coordinates;
-
-import java.lang.reflect.Executable;
-
-/*
-Method receiveCommands should be used to transmit commands to the rover.
- */
-public class Rover {
-
+public class Rover extends Obstacle{
     private String commands;
     private Coordinates coordinates;
     private Obstacle roverObstacle;
     private Coordinates OBSTACLE_UPDATE;
     private boolean OBSTACLE_ADD;
 
-    public Rover() {
-    }
-
     public Rover(Coordinates coordinatesValue, String commands, Obstacle obstacle) {
-
         setObstacleUpdate(coordinatesValue);
         setCoordinates(coordinatesValue);
         setCommands(commands);
-
-        roverObstacle = obstacle;
+        //roverObstacle.setObstaclesList(obstacle.getObstaclesList());// = obstacle;
+        //roverObstacle= obstacle;
+        setRoverObstacle(obstacle);
+        //setObstaclesList(obstacle.getObstaclesList());
+        //ystem.out.println()
         setIsObstacleAdd(roverObstacle.isSetObstaclesListByValue(coordinatesValue));
-    }
-
-    public boolean getIsObstacleAdd() {
-        return OBSTACLE_ADD;
-    }
-
-    public void setIsObstacleAdd(boolean isObstacleAdd) {
-        OBSTACLE_ADD = isObstacleAdd;
-    }
-
-    public Coordinates getObstacleUpdate() {
-        return OBSTACLE_UPDATE;
-    }
-
-    public void setObstacleUpdate(Coordinates obstacleUpdate) {
-        OBSTACLE_UPDATE = obstacleUpdate;
+        //roverObstacle.isSetObstaclesListByValue(obstacle.obstacle);
     }
 
     public String commandsMove() {
@@ -52,7 +28,7 @@ public class Rover {
             resultPosition = getPosition();
             System.out.println(resultPosition);
         } else
-            System.out.println("errrrr");
+            System.out.println(getCoordinates() + " Rover's coordinates exists!");
 
         return resultPosition;
     }
@@ -90,7 +66,7 @@ public class Rover {
     public void updateRoverObstacleList() {
         //roverObstacle.deleteObstaclesList(OBSTACLE_UPDATE);
         //roverObstacle.setObstaclesList(getCoordinates());
-        System.out.println("OLDobst: " + getObstacleUpdate());
+        //System.out.println("OLD Obstacle: " + getObstacleUpdate());
         roverObstacle.updateObstacle(getObstacleUpdate(), getCoordinates());
     }
 
@@ -123,5 +99,21 @@ public class Rover {
 
     public void setRoverObstacle(Obstacle roverObstacle) {
         this.roverObstacle = roverObstacle;
+    }
+
+    public boolean getIsObstacleAdd() {
+        return OBSTACLE_ADD;
+    }
+
+    public void setIsObstacleAdd(boolean isObstacleAdd) {
+        OBSTACLE_ADD = isObstacleAdd;
+    }
+
+    public Coordinates getObstacleUpdate() {
+        return OBSTACLE_UPDATE;
+    }
+
+    public void setObstacleUpdate(Coordinates obstacleUpdate) {
+        OBSTACLE_UPDATE = obstacleUpdate;
     }
 }
