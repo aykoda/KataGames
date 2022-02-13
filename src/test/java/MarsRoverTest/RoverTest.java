@@ -3,6 +3,7 @@ package MarsRoverTest;
 import MarsRover.*;
 import org.junit.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -18,7 +19,7 @@ public class RoverTest {
     static Obstacle obstacleKeep = new Obstacle();
 
     private Rover rover;
-    private static Rover roverKeep;
+    private static Rover roverKeep = new Rover(new Coordinates(3, 3, 5, 5, Direction.NORTH), "", obstacleKeep2);;
     //#endregion
     @Before
     public void beforeTest() {

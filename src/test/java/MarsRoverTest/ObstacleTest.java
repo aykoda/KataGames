@@ -13,10 +13,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ObstacleTest {
     //#region VariablesDefinition
     private Coordinates surfaceSquare, surfaceCircle;
+    private List<Coordinates> obstacleList = new ArrayList<Coordinates>();
 
     private Obstacle roverSet = new Obstacle();
     private static Obstacle obstacleSet;
-    private List<Coordinates> obstacleList = new ArrayList<Coordinates>();
+
+    private List<Rover> rovers;
     //#endregion
     @Before
     public void beforeTest() {
@@ -33,6 +35,10 @@ public class ObstacleTest {
         obstacleSet = new Obstacle(new Coordinates(4, 4, Direction.CENTER));
         obstacleSet.setObstaclesList(obstacleList);
         obstacleSet.isSetObstaclesListByValue(new Coordinates(2, 2, Direction.CENTER));
+
+        rovers = Arrays.asList(
+                new Rover(surfaceSquare, "MMLRMM", roverSet),
+                new Rover(surfaceCircle, "MRLMLRMM", roverSet));
         //#endregion
     }
     //#region InitTestSection
