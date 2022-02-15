@@ -6,14 +6,13 @@ import org.junit.Test;
 
 public class AreaSeatsTest {
     private int rowSeats=15, columnSeats=10;
-    private AreaSeats AreaSeats;
-    private AreaSeats AreaSeatsCustom;
+    private AreaSeatsImpl AreaSeats;
+    private AreaSeatsImpl AreaSeatsCustom;
 
     @Before
     public void beforeTest() {
-        AreaSeats = new AreaSeats();
-        AreaSeatsCustom = new AreaSeats(rowSeats, columnSeats);
-
+        AreaSeats = new AreaSeatsImpl();
+        AreaSeatsCustom = new AreaSeatsImpl(rowSeats, columnSeats);
     }
     @Test
     public void should_getDefaultRowAndColumnSeats() {
@@ -43,5 +42,4 @@ public class AreaSeatsTest {
 
         Assert.assertEquals(expect, result);
     }
-
 }

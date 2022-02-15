@@ -8,32 +8,26 @@ import org.junit.Test;
 public class UsersTicketsTest {
 
     private int ticketsNumber=5;
-    private UsersTickets usersTickets;
-    private UsersTickets usersTicketsCustom;
+    private UsersTicketsImpl usersTickets;
+    private UsersTicketsImpl usersTicketsCustom;
 
     @Before
     public void beforeTest() {
-        usersTickets = new UsersTickets();
-        usersTicketsCustom = new UsersTickets(ticketsNumber);
+        usersTickets = new UsersTicketsImpl();
+        usersTicketsCustom = new UsersTicketsImpl(ticketsNumber);
     }
 
     @Test
-    public void should_getDefaultTıcketsNumber() {
-        int result = usersTickets.getTicketsNumber();
-
-        Assert.assertEquals(usersTickets.TICKETS_NUMBER, result);
-    }
-
-    @Test
-    public void should_getCustomerTıcketsNumber() {
+    public void should_getCustomerTicketsNumber() {
         int result = usersTicketsCustom.getTicketsNumber();
 
         Assert.assertEquals(ticketsNumber, result);
     }
 
     @Test
-    public void should_getRandomTıcketsNumber() {
-        int result = usersTicketsCustom.getTicketsNumberRandomly();
+    public void should_getRandomTicketsNumber() {
+        usersTicketsCustom.setTicketsNumber();
+        int result = usersTicketsCustom.getTicketsNumber();
 
         Assert.assertEquals(usersTicketsCustom.getTicketsNumber(), result);
     }
