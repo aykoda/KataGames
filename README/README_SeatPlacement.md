@@ -19,6 +19,9 @@ The implementation of allocating all the seats available for sale when the progr
 The solution was created with the Test Driven Development approach - RED-GREEN-REFACTOR. Each commit in the Github repository contained unit tests that matched to the focus for each scenario.
 <br>
 
-<img width="50%" height="50%" src="">
+
+
+<img width="80%" height="80%" src="https://user-images.githubusercontent.com/95845154/157393768-8821f133-4c12-42c3-a1ba-942888a526d4.png" >
+
 
 
